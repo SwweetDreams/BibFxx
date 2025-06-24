@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="20" styleClass="form-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.biblfx.controller.PrestamoCrudController">
+   <children>
+      <VBox alignment="CENTER" spacing="10" styleClass="form-header">
+         <children>
+            <Label fx:id="lblTitulo" text="Nuevo Préstamo" styleClass="form-title" />
+         </children>
+      </VBox>
+      
+      <VBox alignment="CENTER" spacing="15" styleClass="form-content">
+         <children>
+            <GridPane hgap="10" vgap="10" alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Usuario:" styleClass="form-label" />
+                  <ComboBox fx:id="cmbUsuario" promptText="Seleccione usuario" styleClass="form-input" GridPane.columnIndex="1" />
+                  
+                  <Label text="Libro:" styleClass="form-label" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="cmbLibro" promptText="Seleccione libro" styleClass="form-input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  
+                  <Label text="Fecha Devolución:" styleClass="form-label" GridPane.rowIndex="2" />
+                  <DatePicker fx:id="dpFechaDevolucionEsperada" promptText="Seleccione fecha" styleClass="form-input" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  
+                  <Label text="Estado:" styleClass="form-label" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="cmbEstado" promptText="Seleccione estado" styleClass="form-input" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  
+                  <Label text="Observaciones:" styleClass="form-label" GridPane.rowIndex="4" />
+                  <TextArea fx:id="txtObservaciones" promptText="Ingrese observaciones (opcional)" styleClass="form-textarea" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+            
+            <HBox spacing="10" alignment="CENTER">
+               <children>
+                  <Button fx:id="btnGuardar" text="Guardar" onAction="#handleGuardar" styleClass="btn-primary" />
+                  <Button fx:id="btnCancelar" text="Cancelar" onAction="#handleCancelar" styleClass="btn-secondary" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   
+   <stylesheets>
+      /css/styles.css
+   </stylesheets>
+</VBox> 

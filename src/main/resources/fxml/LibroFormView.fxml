@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="20" styleClass="form-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.biblfx.controller.LibroCrudController">
+   <children>
+      <VBox alignment="CENTER" spacing="10" styleClass="form-header">
+         <children>
+            <Label fx:id="lblTitulo" text="Nuevo Libro" styleClass="form-title" />
+         </children>
+      </VBox>
+      
+      <VBox alignment="CENTER" spacing="15" styleClass="form-content">
+         <children>
+            <GridPane hgap="10" vgap="10" alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Título:" styleClass="form-label" />
+                  <TextField fx:id="txtTitulo" promptText="Ingrese título del libro" styleClass="form-input" GridPane.columnIndex="1" />
+                  
+                  <Label text="Autor:" styleClass="form-label" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtAutor" promptText="Ingrese autor" styleClass="form-input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  
+                  <Label text="ISBN:" styleClass="form-label" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtIsbn" promptText="Ingrese ISBN (opcional)" styleClass="form-input" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  
+                  <Label text="Editorial:" styleClass="form-label" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtEditorial" promptText="Ingrese editorial (opcional)" styleClass="form-input" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  
+                  <Label text="Año Publicación:" styleClass="form-label" GridPane.rowIndex="4" />
+                  <TextField fx:id="txtAnioPublicacion" promptText="Ingrese año (opcional)" styleClass="form-input" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  
+                  <Label text="Categoría:" styleClass="form-label" GridPane.rowIndex="5" />
+                  <ComboBox fx:id="cmbCategoria" promptText="Seleccione categoría" styleClass="form-input" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  
+                  <Label text="Cantidad Total:" styleClass="form-label" GridPane.rowIndex="6" />
+                  <Spinner fx:id="spnCantidadTotal" editable="true" styleClass="form-spinner" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  
+                  <Label text="Cantidad Disponible:" styleClass="form-label" GridPane.rowIndex="7" />
+                  <Spinner fx:id="spnCantidadDisponible" editable="true" styleClass="form-spinner" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  
+                  <Label text="Descripción:" styleClass="form-label" GridPane.rowIndex="11" />
+                  <TextArea fx:id="txtDescripcion" promptText="Ingrese descripción (opcional)" styleClass="form-textarea" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  
+                  <Label text="Activo:" styleClass="form-label" GridPane.rowIndex="12" />
+                  <CheckBox fx:id="chkActivo" text="Libro activo" styleClass="form-checkbox" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+               </children>
+            </GridPane>
+            
+            <HBox spacing="10" alignment="CENTER">
+               <children>
+                  <Button fx:id="btnGuardar" text="Guardar" onAction="#handleGuardar" styleClass="btn-primary" />
+                  <Button fx:id="btnCancelar" text="Cancelar" onAction="#handleCancelar" styleClass="btn-secondary" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   
+   <stylesheets>
+      /css/styles.css
+   </stylesheets>
+</VBox> 

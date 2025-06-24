@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Alert?>
+<?import javafx.scene.control.Alert.AlertType?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.biblfx.controller.MainMenuController">
+   <top>
+      <HBox styleClass="menu-header" alignment="CENTER_LEFT" spacing="20">
+         <children>
+            <Label text="BiblFx - Sistema de Gestión de Biblioteca" styleClass="header-title" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblUsuario" text="Usuario: " styleClass="header-user" />
+            <Button text="Cerrar Sesión" onAction="#handleLogout" styleClass="btn-logout" />
+         </children>
+         <padding>
+            <Insets top="10" right="20" bottom="10" left="20" />
+         </padding>
+      </HBox>
+   </top>
+   
+   <center>
+      <TabPane fx:id="tabPane" styleClass="main-tab-pane">
+         <tabs>
+            <Tab text="Dashboard" closable="false">
+               <content>
+                  <VBox alignment="CENTER" spacing="20" styleClass="dashboard-container">
+                     <children>
+                        <Label text="Panel de Control" styleClass="dashboard-title" />
+                        
+                        <HBox spacing="20" alignment="CENTER">
+                           <children>
+                              <VBox alignment="CENTER" spacing="10" styleClass="dashboard-card">
+                                 <children>
+                                    <Label text="Usuarios" styleClass="card-title" />
+                                    <Label fx:id="lblTotalUsuarios" text="0" styleClass="card-number" />
+                                    <Button text="Gestionar Usuarios" onAction="#handleGestionarUsuarios" styleClass="btn-card" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="20" right="20" bottom="20" left="20" />
+                                 </padding>
+                              </VBox>
+                              
+                              <VBox alignment="CENTER" spacing="10" styleClass="dashboard-card">
+                                 <children>
+                                    <Label text="Libros" styleClass="card-title" />
+                                    <Label fx:id="lblTotalLibros" text="0" styleClass="card-number" />
+                                    <Button text="Gestionar Libros" onAction="#handleGestionarLibros" styleClass="btn-card" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="20" right="20" bottom="20" left="20" />
+                                 </padding>
+                              </VBox>
+                              
+                              <VBox alignment="CENTER" spacing="10" styleClass="dashboard-card">
+                                 <children>
+                                    <Label text="Préstamos" styleClass="card-title" />
+                                    <Label fx:id="lblTotalPrestamos" text="0" styleClass="card-number" />
+                                    <Button text="Gestionar Préstamos" onAction="#handleGestionarPrestamos" styleClass="btn-card" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="20" right="20" bottom="20" left="20" />
+                                 </padding>
+                              </VBox>
+                              
+                              <VBox alignment="CENTER" spacing="10" styleClass="dashboard-card">
+                                 <children>
+                                    <Label text="Reportes" styleClass="card-title" />
+                                    <Label text="📊" styleClass="card-icon" />
+                                    <Button text="Ver Reportes" onAction="#handleVerReportes" styleClass="btn-card" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="20" right="20" bottom="20" left="20" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        
+                        <VBox spacing="10" styleClass="dashboard-stats">
+                           <children>
+                              <Label text="Estadísticas Rápidas" styleClass="stats-title" />
+                              <HBox spacing="40" alignment="CENTER">
+                                 <children>
+                                    <VBox alignment="CENTER" spacing="5">
+                                       <children>
+                                          <Label text="Préstamos Activos" styleClass="stat-label" />
+                                          <Label fx:id="lblPrestamosActivos" text="0" styleClass="stat-number" />
+                                       </children>
+                                    </VBox>
+                                    
+                                    <VBox alignment="CENTER" spacing="5">
+                                       <children>
+                                          <Label text="Préstamos Vencidos" styleClass="stat-label" />
+                                          <Label fx:id="lblPrestamosVencidos" text="0" styleClass="stat-number" />
+                                       </children>
+                                    </VBox>
+                                    
+                                    <VBox alignment="CENTER" spacing="5">
+                                       <children>
+                                          <Label text="Libros Disponibles" styleClass="stat-label" />
+                                          <Label fx:id="lblLibrosDisponibles" text="0" styleClass="stat-number" />
+                                       </children>
+                                    </VBox>
+                                    
+                                    <VBox alignment="CENTER" spacing="5">
+                                       <children>
+                                          <Label text="Stock Bajo" styleClass="stat-label" />
+                                          <Label fx:id="lblStockBajo" text="0" styleClass="stat-number" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets top="20" right="20" bottom="20" left="20" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets top="20" right="20" bottom="20" left="20" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+            
+            <Tab text="Gestión de Usuarios" closable="false">
+               <content>
+                  <VBox spacing="10" styleClass="management-container">
+                     <children>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                           <children>
+                              <Button text="Nuevo Usuario" onAction="#handleNuevoUsuario" styleClass="btn-primary" />
+                              <Button text="Editar Usuario" onAction="#handleEditarUsuario" styleClass="btn-secondary" />
+                              <Button text="Eliminar Usuario" onAction="#handleEliminarUsuario" styleClass="btn-danger" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <TextField fx:id="txtBuscarUsuario" promptText="Buscar usuario..." styleClass="search-input" />
+                              <Button text="Buscar" onAction="#handleBuscarUsuario" styleClass="btn-search" />
+                           </children>
+                           <padding>
+                              <Insets top="10" right="10" bottom="10" left="10" />
+                           </padding>
+                        </HBox>
+                        
+                        <TableView fx:id="tblUsuarios" VBox.vgrow="ALWAYS" styleClass="data-table">
+                           <columns>
+                              <TableColumn fx:id="colIdUsuario" text="ID" />
+                              <TableColumn fx:id="colUsername" text="Usuario" />
+                              <TableColumn fx:id="colNombreCompleto" text="Nombre Completo" />
+                              <TableColumn fx:id="colEmail" text="Email" />
+                              <TableColumn fx:id="colRol" text="Rol" />
+                              <TableColumn fx:id="colActivo" text="Activo" />
+                              <TableColumn fx:id="colFechaCreacion" text="Fecha Creación" />
+                           </columns>
+                        </TableView>
+                        
+                        <HBox spacing="10" alignment="CENTER_RIGHT">
+                           <children>
+                              <Button text="Anterior" onAction="#handleAnteriorUsuario" styleClass="btn-pagination" />
+                              <Label fx:id="lblPaginaUsuario" text="Página 1 de 1" styleClass="pagination-label" />
+                              <Button text="Siguiente" onAction="#handleSiguienteUsuario" styleClass="btn-pagination" />
+                           </children>
+                           <padding>
+                              <Insets top="5" right="10" bottom="5" left="10" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            
+            <Tab text="Gestión de Libros" closable="false">
+               <content>
+                  <VBox spacing="10" styleClass="management-container">
+                     <children>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                           <children>
+                              <Button text="Nuevo Libro" onAction="#handleNuevoLibro" styleClass="btn-primary" />
+                              <Button text="Editar Libro" onAction="#handleEditarLibro" styleClass="btn-secondary" />
+                              <Button text="Eliminar Libro" onAction="#handleEliminarLibro" styleClass="btn-danger" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <TextField fx:id="txtBuscarLibro" promptText="Buscar libro..." styleClass="search-input" />
+                              <Button text="Buscar" onAction="#handleBuscarLibro" styleClass="btn-search" />
+                           </children>
+                           <padding>
+                              <Insets top="10" right="10" bottom="10" left="10" />
+                           </padding>
+                        </HBox>
+                        
+                        <TableView fx:id="tblLibros" VBox.vgrow="ALWAYS" styleClass="data-table">
+                           <columns>
+                              <TableColumn fx:id="colIdLibro" text="ID" />
+                              <TableColumn fx:id="colTitulo" text="Título" />
+                              <TableColumn fx:id="colAutor" text="Autor" />
+                              <TableColumn fx:id="colIsbn" text="ISBN" />
+                              <TableColumn fx:id="colEditorial" text="Editorial" />
+                              <TableColumn fx:id="colCategoria" text="Categoría" />
+                              <TableColumn fx:id="colDisponible" text="Disponible" />
+                              <TableColumn fx:id="colTotal" text="Total" />
+                              <TableColumn fx:id="colActivoLibro" text="Activo" />
+                           </columns>
+                        </TableView>
+                        
+                        <HBox spacing="10" alignment="CENTER_RIGHT">
+                           <children>
+                              <Button text="Anterior" onAction="#handleAnteriorLibro" styleClass="btn-pagination" />
+                              <Label fx:id="lblPaginaLibro" text="Página 1 de 1" styleClass="pagination-label" />
+                              <Button text="Siguiente" onAction="#handleSiguienteLibro" styleClass="btn-pagination" />
+                           </children>
+                           <padding>
+                              <Insets top="5" right="10" bottom="5" left="10" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            
+            <Tab text="Gestión de Préstamos" closable="false">
+               <content>
+                  <VBox spacing="10" styleClass="management-container">
+                     <children>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                           <children>
+                              <Button text="Nuevo Préstamo" onAction="#handleNuevoPrestamo" styleClass="btn-primary" />
+                              <Button text="Devolver Libro" onAction="#handleDevolverLibro" styleClass="btn-secondary" />
+                              <Button text="Cancelar Préstamo" onAction="#handleCancelarPrestamo" styleClass="btn-danger" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <TextField fx:id="txtBuscarPrestamo" promptText="Buscar préstamo..." styleClass="search-input" />
+                              <Button text="Buscar" onAction="#handleBuscarPrestamo" styleClass="btn-search" />
+                           </children>
+                           <padding>
+                              <Insets top="10" right="10" bottom="10" left="10" />
+                           </padding>
+                        </HBox>
+                        
+                        <TableView fx:id="tblPrestamos" VBox.vgrow="ALWAYS" styleClass="data-table">
+                           <columns>
+                              <TableColumn fx:id="colIdPrestamo" text="ID" />
+                              <TableColumn fx:id="colUsuarioPrestamo" text="Usuario" />
+                              <TableColumn fx:id="colLibroPrestamo" text="Libro" />
+                              <TableColumn fx:id="colFechaPrestamo" text="Fecha Préstamo" />
+                              <TableColumn fx:id="colFechaDevolucion" text="Fecha Devolución" />
+                              <TableColumn fx:id="colEstado" text="Estado" />
+                              <TableColumn fx:id="colObservaciones" text="Observaciones" />
+                           </columns>
+                        </TableView>
+                        
+                        <HBox spacing="10" alignment="CENTER_RIGHT">
+                           <children>
+                              <Button text="Anterior" onAction="#handleAnteriorPrestamo" styleClass="btn-pagination" />
+                              <Label fx:id="lblPaginaPrestamo" text="Página 1 de 1" styleClass="pagination-label" />
+                              <Button text="Siguiente" onAction="#handleSiguientePrestamo" styleClass="btn-pagination" />
+                           </children>
+                           <padding>
+                              <Insets top="5" right="10" bottom="5" left="10" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            
+            <Tab text="Reportes" closable="false">
+               <content>
+                  <VBox spacing="20" styleClass="reports-container">
+                     <children>
+                        <Label text="Reportes del Sistema" styleClass="reports-title" />
+                        
+                        <HBox spacing="20" alignment="CENTER">
+                           <children>
+                              <VBox spacing="10" styleClass="report-card">
+                                 <children>
+                                    <Label text="Reporte de Préstamos" styleClass="report-card-title" />
+                                    <Button text="Generar Reporte" onAction="#handleReportePrestamos" styleClass="btn-report" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="15" right="15" bottom="15" left="15" />
+                                 </padding>
+                              </VBox>
+                              
+                              <VBox spacing="10" styleClass="report-card">
+                                 <children>
+                                    <Label text="Reporte de Libros" styleClass="report-card-title" />
+                                    <Button text="Generar Reporte" onAction="#handleReporteLibros" styleClass="btn-report" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="15" right="15" bottom="15" left="15" />
+                                 </padding>
+                              </VBox>
+                              
+                              <VBox spacing="10" styleClass="report-card">
+                                 <children>
+                                    <Label text="Reporte de Usuarios" styleClass="report-card-title" />
+                                    <Button text="Generar Reporte" onAction="#handleReporteUsuarios" styleClass="btn-report" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="15" right="15" bottom="15" left="15" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        
+                        <TextArea fx:id="txtReporte" promptText="El reporte aparecerá aquí..." editable="false" VBox.vgrow="ALWAYS" styleClass="report-text-area" />
+                     </children>
+                     <padding>
+                        <Insets top="20" right="20" bottom="20" left="20" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+   
+   <stylesheets>
+      /css/styles.css
+   </stylesheets>
+</BorderPane> 

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Alert?>
+<?import javafx.scene.control.Alert.AlertType?>
+
+<VBox alignment="CENTER" spacing="20" styleClass="login-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.biblfx.controller.LoginController">
+   <children>
+      <VBox alignment="CENTER" spacing="10" styleClass="login-header">
+         <children>
+            <Label text="Sistema de Gestión de Biblioteca" styleClass="login-title" />
+            <Label text="BiblFx" styleClass="login-subtitle" />
+         </children>
+      </VBox>
+      
+      <VBox alignment="CENTER" spacing="15" styleClass="login-form">
+         <children>
+            <VBox spacing="5">
+               <children>
+                  <Label text="Usuario:" styleClass="form-label" />
+                  <TextField fx:id="txtUsername" promptText="Ingrese su nombre de usuario" styleClass="form-input" />
+               </children>
+            </VBox>
+            
+            <VBox spacing="5">
+               <children>
+                  <Label text="Contraseña:" styleClass="form-label" />
+                  <PasswordField fx:id="txtPassword" promptText="Ingrese su contraseña" styleClass="form-input" />
+               </children>
+            </VBox>
+            
+            <HBox spacing="10" alignment="CENTER">
+               <children>
+                  <Button text="Iniciar Sesión" onAction="#handleLogin" styleClass="btn-primary" />
+                  <Button text="Limpiar" onAction="#handleClear" styleClass="btn-secondary" />
+               </children>
+            </HBox>
+            
+            <HBox spacing="10" alignment="CENTER">
+               <children>
+                  <Hyperlink text="¿Olvidó su contraseña?" onAction="#handleForgotPassword" />
+                  <Hyperlink text="Registrarse" onAction="#handleRegister" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      
+      <VBox alignment="CENTER" spacing="5" styleClass="login-footer">
+         <children>
+            <Label text="© 2024 BiblFx - Sistema de Gestión de Biblioteca" styleClass="footer-text" />
+            <Label text="Desarrollado con JavaFX y Spring Boot" styleClass="footer-text" />
+         </children>
+      </VBox>
+   </children>
+   
+   <stylesheets>
+      /css/styles.css
+   </stylesheets>
+</VBox> 
